@@ -20,13 +20,20 @@ export const metadata: Metadata = {
   description: 'NoteHub application for creating and managing notes',
 
   openGraph: {
-    title: 'NoteHub',
-    description: 'NoteHub application for creating and managing notes',
+  title: 'NoteHub',
+  description: 'NoteHub application for creating and managing notes',
 
-    images: [
-      'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
-    ],
-  },
+  url: 'https://08-zustand-nine-dun.vercel.app/',
+
+  images: [
+    {
+      url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'NoteHub preview image',
+    },
+  ],
+},
 };
 
 type RootLayoutProps = Readonly<{

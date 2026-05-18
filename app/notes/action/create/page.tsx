@@ -7,12 +7,20 @@ import css from './CreateNotePage.module.css';
 export const metadata: Metadata = {
   title: 'Create note',
   description: 'Create a new note',
+
   openGraph: {
     title: 'Create note',
     description: 'Create a new note',
-    url: '/notes/action/create',
+
+    url: 'https://08-zustand-nine-dun.vercel.app/',
+
     images: [
-      'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+      {
+        url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Create note page preview',
+      },
     ],
   },
 };
