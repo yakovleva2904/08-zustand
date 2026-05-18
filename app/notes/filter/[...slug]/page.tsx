@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 import {
   dehydrate,
   HydrationBoundary,
@@ -11,6 +13,30 @@ import NotesClient from './Notes.client';
 type Props = {
   params: Promise<{ slug?: string[] }>;
 };
+
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
+  const { slug } = await params;
+
+  const currentSlug = slug?.[0] ?? 'all';
+
+  const tag = currentSlug === 'all' ? 'All' : currentSlug;
+
+  return {
+    title: `Notes filtered by ${tag}`,
+    description: `Browse notes filtered by ${tag}`,
+
+    openGraph: {
+      title: `Notes filtered by ${tag}`,
+      description: `Browse notes filtered by ${tag}`,
+      url: `/notes/filter/${currentSlug}`,
+      images: [
+        'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+      ],
+    },
+  };
+}
 
 export default async function NotesFilterPage({ params }: Props) {
   const { slug } = await params;

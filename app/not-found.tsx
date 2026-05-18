@@ -1,4 +1,20 @@
+import type { Metadata } from 'next';
 import css from './not-found.module.css';
+
+export const metadata: Metadata = {
+  title: '404 - Page not found',
+  description: 'The page you are looking for does not exist',
+
+  openGraph: {
+    title: '404 - Page not found',
+    description: 'The page you are looking for does not exist',
+    url: '/not-found',
+
+    images: [
+      'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+    ],
+  },
+};
 
 export default function NotFound() {
     return (

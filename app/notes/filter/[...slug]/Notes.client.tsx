@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 import css from './Notes.module.css';
 
@@ -12,8 +13,6 @@ import { fetchNotes } from '@/lib/api';
 import SearchBox from '@/components/SearchBox/SearchBox';
 import Pagination from '@/components/Pagination/Pagination';
 import NoteList from '@/components/NoteList/NoteList';
-import Modal from '@/components/Modal/Modal';
-import NoteForm from '@/components/NoteForm/NoteForm';
 
 type Props = {
   tag?: string;
@@ -21,7 +20,6 @@ type Props = {
 
 export default function NotesClient({ tag }: Props) {
   const [page, setPage] = useState(1);
-  const [showModal, setShowModal] = useState(false);
 
   const [inputValue, setInputValue] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
@@ -52,30 +50,22 @@ export default function NotesClient({ tag }: Props) {
           }}
         />
 
-        {data.totalPages > 1 && (
-          <Pagination
-            totalPages={data.totalPages}
-            currentPage={page}
-            onPageChange={setPage}
-          />
-        )}
+        
+          {data.totalPages > 1 && (
+            <Pagination
+              totalPages={data.totalPages}
+              currentPage={page}
+              onPageChange={setPage}
+            />
+          )}
 
-        <button
-          className={css.button}
-          type="button"
-          onClick={() => setShowModal(true)}
-        >
-          Create note +
-        </button>
+          <Link href="/notes/action/create" className={css.button}>
+            Create note +
+          </Link>
+        
       </header>
 
       {data.notes.length > 0 && <NoteList notes={data.notes} />}
-
-      {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <NoteForm onClose={() => setShowModal(false)} />
-        </Modal>
-      )}
     </div>
   );
 }
