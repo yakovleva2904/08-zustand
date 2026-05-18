@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: 'Create note',
     description: 'Create a new note',
 
-    url: 'https://08-zustand-nine-dun.vercel.app/',
+    url: 'https://08-zustand-nine-dun.vercel.app/notes/action/create',
 
     images: [
       {
